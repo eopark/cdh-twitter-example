@@ -22,8 +22,8 @@
                  xmlns="uri:oozie:coordinator:0.1">
   <datasets>
     <dataset name="tweets" frequency="${coord:hours(1)}"
-             initial-instance="${initialDataset}" timezone="America/Los_Angeles">
-      <uri-template>hdfs://hadoop1:8020/user/flume/tweets/${YEAR}/${MONTH}/${DAY}/${HOUR}</uri-template>
+             initial-instance="${initialDataset}" timezone="Asia/Tokyo">
+      <uri-template>hdfs://nn1.demo.dev:8020/user/flume/tweets/${YEAR}/${MONTH}/${DAY}/${HOUR}</uri-template>
       <done-flag></done-flag>
     </dataset>
   </datasets>
