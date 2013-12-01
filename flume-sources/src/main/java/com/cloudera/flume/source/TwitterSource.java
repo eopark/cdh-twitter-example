@@ -18,7 +18,9 @@
 
 package com.cloudera.flume.source;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.flume.Context;
@@ -110,8 +112,8 @@ public class TwitterSource extends AbstractSource
         headers.put("timestamp", String.valueOf(status.getCreatedAt().getTime()));
         Event event = EventBuilder.withBody(
             DataObjectFactory.getRawJSON(status).getBytes(), headers);
-        
-        channel.processEvent(event);
+	List<Event> events = Arrays.asList(event);
+        channel.processEventBatch(events);
       }
       
       // This listener will ignore everything except for new tweets
